@@ -50,6 +50,8 @@ Run `pdf2svg tuda_logo.pdf tuda_logo.svg` or convert to `.svg` using e.g. Inksca
 
 ## Development
 
+This template currently only follows the TU Darmstadt Beamer template in spirit but not pixel-perfect. As the PowerPoint template uses non-free fonts a goal of this project is to more closely match the LaTeX TU Darmstadt Beamer 2023 template. Pull requests to improve this are really welcome.
+
 ```
 mkdir -p ~/.cache/typst/packages/preview/not-tudabeamer-2023
 ln -s $PWD ~/.cache/typst/packages/preview/not-tudabeamer-2023/0.1.0
