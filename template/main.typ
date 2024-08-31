@@ -31,6 +31,9 @@
 - Some text
 - More text
   - This is pretty small, you may want to change it
+    - nested
+      - bullet
+        - points
 
 = Another Section
 

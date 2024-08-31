@@ -4,11 +4,13 @@ A [touying](https://github.com/touying-typ/touying) presentation template matchi
 
 ## Usage
 
-Install Roboto font for your system.
-
-Download https://download.hrz.tu-darmstadt.de/protected/ULB/tuda_logo.pdf and convert it to `.svg` using e.g. Inkscape.
+Install Roboto font for your system or download them from https://github.com/googlefonts/roboto/releases/download/v2.138/roboto-unhinted.zip.
 
 Run `typst init @preview/not-tudabeamer-2023:0.1.0`
+
+Download https://download.hrz.tu-darmstadt.de/protected/ULB/tuda_logo.pdf.
+
+Run `pdf2svg tuda_logo.pdf tuda_logo.svg` or convert to `.svg` using e.g. Inkscape.
 
 ### Examples
 
