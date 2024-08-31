@@ -90,8 +90,8 @@
   final-sections = final-sections.filter(section => section.loc != none)
   let current-index = current-sections.len() - 1
   set enum(..enum-args)
-  set enum(numbering: n => title-font[#n], spacing: 0.22in, body-indent: 0.25in)
-  show enum : set align(horizon)
+  set enum(numbering: n => title-font[#n], spacing: 0.4in, body-indent: 0.25in)
+  show enum: set align(horizon)
   v(2.91in-1.18in-self.page-args.margin.top)
   columns(2,
     for (i, section) in final-sections.enumerate() {
