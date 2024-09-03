@@ -15,7 +15,7 @@ Run `pdf2svg tuda_logo.pdf tuda_logo.svg` or convert to `.svg` using e.g. Inksca
 ### Examples
 
 ```typst
-#import "@preview/touying:0.4.2": utils
+#import "@preview/touying:0.5.1": utils
 #import "@preview/not-tudabeamer-2023:0.1.0": register
 
 #let tuda_logo = read("tuda_logo.svg")
