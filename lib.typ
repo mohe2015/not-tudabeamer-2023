@@ -124,7 +124,7 @@
   columns(2,
     for (i, section) in elems.enumerate() {
     {
-        enum.item(i + 1, section)
+        enum.item(i + 1, section.body)
       }
       parbreak()
   })
