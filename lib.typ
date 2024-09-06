@@ -42,43 +42,34 @@
   text(font: "roboto", fallback: false, weight: "black", bottom-edge: "descender", size: 42pt, ..args)
 }
 
-#let slide(title: auto, body, ..args) = touying-slide-wrapper(self => {
-  if title != auto {
-    self.store.title = title
+#let header = self => pad(left: margin.left, right: margin.right, align(top)[
+  #if self.store.enable-header {
+    v(0.39in)
+    header-font(upper(self.info.short-title + " / " + self.info.short-author))
   }
-  let header = self => pad(left: margin.left, right: margin.right, align(top)[
-    #if self.store.enable-header {
-      v(0.39in)
-      header-font(upper(self.info.short-title + " / " + self.info.short-author))
-    }
-    #place(top + right, dx: 0.34in, dy: 0.2in)[#image.decode(self.info.logo, height: 0.99in)]
-  ])
-  let footer(self) = pad(left: margin.left, right: margin.right, grid(
-    rows: 0.125in,
-    columns: (15%, 1fr, 15%),
-    align: (bottom + left, bottom + center, bottom + right),
-    footer-font(utils.display-info-date(self)),
-    footer-font(self.info.department + " | " + self.info.institute + " | " + self.info.short-author),
-    footer-font(context utils.slide-counter.display() ),
-  ))
+  #place(top + right, dx: 0.34in, dy: 0.2in)[#image.decode(self.info.logo, height: 0.99in)]
+])
+#let footer(self) = pad(left: margin.left, right: margin.right, grid(
+  rows: 0.125in,
+  columns: (15%, 1fr, 15%),
+  align: (bottom + left, bottom + center, bottom + right),
+  footer-font(utils.display-info-date(self)),
+  footer-font(self.info.department + " | " + self.info.institute + " | " + self.info.short-author),
+  footer-font(context utils.slide-counter.display() ),
+))
+
+#let slide(title: auto, body, ..args) = touying-slide-wrapper(self => {
   let body-with-additions = {
     block(
       height: 1.99in - margin.top,
       below: 0.24in,
       width: 100% - 2in,
       align(bottom)[
-        #slide-title-font(upper(utils.call-or-display(self, self.store.title)))
+        #slide-title-font(upper(utils.display-current-heading(depth: self.slide-level)))
       ]
     )
     body
   }
-  self = utils.merge-dicts(
-    self,
-    config-page(
-      header: header,
-      footer: footer,
-    ),
-  )
   touying-slide(self: self, ..args, body-with-additions)
  })
 
@@ -140,14 +131,12 @@
 
 #let not-tudabeamer-2023-theme(
   ..args,
-  title: self => utils.display-current-heading(depth: self.slide-level),
   body,
 ) = {
   set text(font: "roboto", fallback: false, size: 20pt)
 
   show: touying-slides.with(
     config-store(
-      title: title,
       enable-header: true,
     ),
     config-page(
@@ -156,6 +145,8 @@
       footer-descent: 0in,
       header-ascent: 0in,
       margin: margin,
+      header: header,
+      footer: footer,
     ),
     config-common(
       slide-fn: slide,
