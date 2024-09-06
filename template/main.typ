@@ -19,6 +19,8 @@
 
 #title-slide()
 
+#outline-slide()
+
 = Section
 
 #new-section-slide("Test")

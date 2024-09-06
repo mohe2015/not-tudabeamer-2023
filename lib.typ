@@ -111,22 +111,25 @@
   touying-slide(self: self, body)
 })
 
-#let d-outline(self: none, enum-args: (:), list-args: (:), cover: true) = states.touying-progress-with-sections(dict => {
-  let (current-sections, final-sections) = dict
-  current-sections = current-sections.filter(section => section.loc != none)
-  final-sections = final-sections.filter(section => section.loc != none)
-  let current-index = current-sections.len() - 1
+#let d-outline(self: none, enum-args: (:), list-args: (:), cover: true) = context {
+   let elems = query(
+    selector(heading),
+  )
   set enum(..enum-args)
   set enum(numbering: n => title-font[#n], spacing: 0.4in, body-indent: 0.25in)
   show enum: set align(horizon)
   v(2.91in-1.18in-margin.top)
   columns(2,
-    for (i, section) in final-sections.enumerate() {
+    for (i, section) in elems.enumerate() {
     {
-        enum.item(i + 1, [#link(section.loc, section.title)<touying-link>])
+        enum.item(i + 1, section)
       }
       parbreak()
   })
+}
+
+#let outline-slide(self: none) = touying-slide-wrapper(self => {
+  touying-slide(self: self, d-outline())
 })
 
 #let not-tudabeamer-2023-theme(
