@@ -114,7 +114,7 @@
 
 #let d-outline() = context {
    let elems = query(
-    selector(heading.where(level: 1)),
+    selector(heading.where(outlined: true)),
   )
   set enum(numbering: n => title-font[#n], spacing: 0.4in, body-indent: 0.25in)
   show enum: set align(horizon)
@@ -128,7 +128,7 @@
   })
 }
 
-#let outline-slide() = slide(title: "Outline", d-outline())
+#let outline-slide() = slide(title: "Outline", outline())
 
 #let not-tudabeamer-2023-theme(
   ..args,
