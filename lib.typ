@@ -116,7 +116,7 @@
 
 #let d-outline() = context {
    let elems = query(
-    heading.where(outlined: true)
+    heading.where(level: 1, outlined: true)
   )
   set enum(numbering: n => title-font[#n], spacing: 0.4in, body-indent: 0.25in)
   show enum: set align(horizon)
