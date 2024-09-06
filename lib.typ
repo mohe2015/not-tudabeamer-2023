@@ -47,7 +47,7 @@
     v(0.39in)
     header-font(upper(self.info.short-title + " / " + self.info.short-author))
   }
-  #place(top + right, dx: 0.34in, dy: 0.2in)[#image.decode(self.info.logo, height: 0.99in)]
+  #place(top + right, dx: 0.34in, dy: 0.2in)[#block(height: 0.99in, self.info.logo)]
 ])
 
 #let footer(self) = pad(left: margin.left, right: margin.right, grid(

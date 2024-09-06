@@ -12,7 +12,7 @@
     date: datetime.today(),
     department: [Department],
     institute: [Institute],
-    logo: tuda_logo
+    logo: image.decode(tuda_logo, height: 100%)
   )
 )
 
