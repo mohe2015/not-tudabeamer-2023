@@ -22,8 +22,6 @@
 
 = Section
 
-#new-section-slide([Test]) // TODO FIXME not shown in outline
-
 == Subsection
 
 - Some text

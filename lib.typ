@@ -128,7 +128,7 @@
   })
 }
 
-#let outline-slide() = slide(title: "Outline", outline())
+#let outline-slide() = slide(title: "Outline", d-outline())
 
 #let not-tudabeamer-2023-theme(
   ..args,
