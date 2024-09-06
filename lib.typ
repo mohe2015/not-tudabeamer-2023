@@ -1,4 +1,4 @@
-#import "@preview/touying:0.5.1": *
+#import "@preview/touying:0.5.2": *
 
 #let margin = (
   left: 0.39in,
@@ -60,7 +60,7 @@
 ))
 
 #let slide(title: auto, body, ..args) = touying-slide-wrapper(self => {
-  let body-with-additions = {
+  let body-with-additions = self => {
     block(
       height: 1.99in - margin.top,
       below: 0.24in,
@@ -69,7 +69,7 @@
         #slide-title-font(upper(if title != auto { title } else { utils.display-current-heading(depth: self.slide-level) }))
       ]
     )
-    body
+    utils.call-or-display(self, body)
   }
   touying-slide(self: self, ..args, body-with-additions)
  })
