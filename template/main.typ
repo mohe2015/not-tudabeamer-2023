@@ -10,7 +10,8 @@
     date: datetime.today(),
     department: [Department],
     institute: [Institute],
-    logo: image("tuda_logo.svg", height: 100%)
+    logo: text(fallback: true, size: 0.75in, emoji.cat.face)
+    //logo: image("tuda_logo.svg", height: 100%)
   )
 )
 

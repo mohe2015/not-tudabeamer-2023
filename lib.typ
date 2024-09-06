@@ -135,7 +135,6 @@
   body,
 ) = {
   set text(font: "roboto", fallback: false, size: 20pt)
-
   show: touying-slides.with(
     config-store(
       enable-header: true,
