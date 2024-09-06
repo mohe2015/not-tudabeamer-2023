@@ -1,7 +1,5 @@
 #import "@preview/not-tudabeamer-2023:0.1.0": *
 
-#let tuda_logo = read("tuda_logo.svg")
-
 #show: not-tudabeamer-2023-theme.with(
   config-info(
     title: [Title],
@@ -12,7 +10,7 @@
     date: datetime.today(),
     department: [Department],
     institute: [Institute],
-    logo: image.decode(tuda_logo, height: 100%)
+    logo: image("tuda_logo.svg", height: 100%)
   )
 )
 
