@@ -49,6 +49,7 @@
   }
   #place(top + right, dx: 0.34in, dy: 0.2in)[#image.decode(self.info.logo, height: 0.99in)]
 ])
+
 #let footer(self) = pad(left: margin.left, right: margin.right, grid(
   rows: 0.125in,
   columns: (15%, 1fr, 15%),
@@ -65,7 +66,7 @@
       below: 0.24in,
       width: 100% - 2in,
       align(bottom)[
-        #slide-title-font(upper(utils.display-current-heading(depth: self.slide-level)))
+        #slide-title-font(upper(if title != auto { title } else { utils.display-current-heading(depth: self.slide-level) }))
       ]
     )
     body
@@ -104,7 +105,7 @@
       ),
       gutter: (0in, 0.05in),
       grid.cell([]),
-      grid.cell(align: bottom, slide-title-font(upper(utils.display-current-heading(depth: self.slide-level)))),
+      grid.cell(align: bottom, slide-title-font(upper(section))),
       grid.cell(align: top, subtitle-font([]))
     )
   }

@@ -7,7 +7,6 @@
     title: [Title],
     short-title: [Title],
     subtitle: [Subtitle],
-    short-subtitle: [Subtitle],
     author: "Author",
     short-author: "Author",
     date: datetime.today(),
@@ -23,7 +22,7 @@
 
 = Section
 
-#new-section-slide("Test")
+#new-section-slide([Test]) // TODO FIXME not shown in outline
 
 == Subsection
 
