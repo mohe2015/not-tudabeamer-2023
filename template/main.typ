@@ -1,28 +1,23 @@
-#import "@preview/touying:0.4.2": utils
-#import "@preview/not-tudabeamer-2023:0.1.0": register
+#import "@preview/not-tudabeamer-2023:0.1.0": *
 
-#let tuda_logo = read("tuda_logo.svg")
-
-#let s = register(tuda_logo)
-
-#let s = (s.methods.info)(
-  self: s,
-  title: [Title],
-  short-title: [Title],
-  subtitle: [Subtitle],
-  short-subtitle: [Subtitle],
-  author: "Author",
-  short-author: "Author",
-  date: datetime.today(),
-  department: [Department],
-  institute: [Institute],
+#show: not-tudabeamer-2023-theme.with(
+  config-info(
+    title: [Title],
+    short-title: [Title],
+    subtitle: [Subtitle],
+    author: "Author",
+    short-author: "Author",
+    date: datetime.today(),
+    department: [Department],
+    institute: [Institute],
+    logo: text(fallback: true, size: 0.75in, emoji.cat.face)
+    //logo: image("tuda_logo.svg", height: 100%)
+  )
 )
 
-#let (init, slides, speaker-note) = utils.methods(s)
-#show: init
+#title-slide()
 
-#let (slide, title-slide) = utils.slides(s)
-#show: slides.with(outline-slide: true)
+#outline-slide()
 
 = Section
 
