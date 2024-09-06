@@ -93,7 +93,7 @@
   touying-slide(self: self, body)
 })
 
-#let new-section-slide(self: none, section) = touying-slide-wrapper(self => {
+#let new-section-slide(section) = touying-slide-wrapper(self => {
   let body = {
     grid(
       columns: 100%,
@@ -111,11 +111,10 @@
   touying-slide(self: self, body)
 })
 
-#let d-outline(self: none, enum-args: (:), list-args: (:), cover: true) = context {
+#let d-outline() = context {
    let elems = query(
     selector(heading),
   )
-  set enum(..enum-args)
   set enum(numbering: n => title-font[#n], spacing: 0.4in, body-indent: 0.25in)
   show enum: set align(horizon)
   v(2.91in-1.18in-margin.top)
@@ -128,9 +127,7 @@
   })
 }
 
-#let outline-slide(self: none) = touying-slide-wrapper(self => {
-  touying-slide(self: self, d-outline())
-})
+#let outline-slide() = slide(title: "Outline", d-outline())
 
 #let not-tudabeamer-2023-theme(
   ..args,
