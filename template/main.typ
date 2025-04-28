@@ -12,7 +12,12 @@
     institute: [Institute],
     logo: text(fallback: true, size: 0.75in, emoji.cat.face)
     //logo: image("tuda_logo.svg", height: 100%)
-  )
+  ),
+  config-store(
+    show-bar: true,
+    enable-header: true
+  ),
+  accentcolor: "0d",
 )
 
 #title-slide()

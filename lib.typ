@@ -1,4 +1,5 @@
 #import "@preview/touying:0.6.1": *
+#import "tudacolors.typ": tuda_colors
 
 #let margin = (
   left: 0.39in,
@@ -42,12 +43,27 @@
   text(font: "roboto", fallback: false, weight: "black", bottom-edge: "descender", size: 42pt, ..args)
 }
 
-#let header = self => pad(left: margin.left, right: margin.right, align(top)[
-  #if self.store.enable-header {
-    v(0.39in)
-    header-font(upper(self.info.short-title + " / " + self.info.short-author))
+#let header = self => pad(align(top)[
+  #if self.store.show-logo {
+    place(top + right, dx: 0.34in - margin.right, dy: 0.2in)[#block(height: 0.99in, self.info.logo)]
   }
-  #place(top + right, dx: 0.34in, dy: 0.2in)[#block(height: 0.99in, self.info.logo)]
+  #show: box( // blue bar
+    grid(
+    if self.store.show-bar {
+    grid(
+    rows: auto,
+    rect(
+      fill: self.colors.primary,
+      width: 100%,
+      height: 4mm //- 0.05mm
+    ),
+    v(1.4mm), // should be 1.4mm according to guidelines
+    line(length: 100%, stroke: 1.2pt))}, // should be 1.2pt according to guidelines
+    if self.store.enable-header {
+    pad(top: 0.25in, left: margin.left,
+     header-font(upper(self.info.short-title + " / " + self.info.short-author)))},
+    )
+  )  
 ])
 
 #let footer(self) = pad(left: margin.left, right: margin.right, grid(
@@ -64,8 +80,8 @@
     self,
     config-common(subslide-preamble: self => {
       block(
-        height: 1.99in - margin.top,
-        below: 0.24in,
+        height: 1.4in - margin.top,
+        below: 0.34in,
         width: 100% - 2in,
         align(bottom)[
           #slide-title-font(upper(if title != auto { title } else { utils.display-current-heading(depth: self.slide-level) }))
@@ -133,6 +149,7 @@
 #let outline-slide() = slide(title: "Outline", d-outline())
 
 #let not-tudabeamer-2023-theme(
+  accentcolor: "2c",
   ..args,
   body,
 ) = {
@@ -140,6 +157,8 @@
   show: touying-slides.with(
     config-store(
       enable-header: true,
+      show-logo: true,
+      show-bar: false
     ),
     config-page(
       width: 13.33in,
@@ -154,6 +173,11 @@
       slide-fn: slide,
       new-section-slide-fn: new-section-slide,
       datetime-format: "[day].[month].[year]"
+    ),
+    config-colors(
+      primary: rgb(tuda_colors.at(accentcolor)),
+      // neutral-lightest: #TODO,
+      // neutral-darkest: #TODO,
     ),
     config-methods(init: (self: none, body) => {
       set document(title: self.info.title + " " + self.info.subtitle, author: self.info.author, date: self.info.date)
